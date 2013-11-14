@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Main {
 
-    private static int numBuckets = 6;
+    private static int numBuckets = 1;
     private static CouchbaseClient clients[];
     private static List<URI> baseList;
 
@@ -54,7 +54,7 @@ public class Main {
 
 
     public static void createClients() {
-        for (int i=1; i==numBuckets; i++) {
+        for (int i=0; i<numBuckets; i++) {
             String bucketName = "bucket" + i;
             System.out.println("creating " + bucketName);
             try {
@@ -66,7 +66,7 @@ public class Main {
     }
 
     public static void shutdownClients() {
-        for (int i=1; i==numBuckets; i++) {
+        for (int i=0; i<numBuckets; i++) {
             String bucketName = "bucket" + i;
             clients[i].shutdown(1, TimeUnit.SECONDS);
         }
