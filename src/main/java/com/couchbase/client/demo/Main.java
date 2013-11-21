@@ -19,8 +19,8 @@ public class Main {
     public static void main(String args[]) throws InterruptedException {
 
         baseList = Arrays.asList(
-                URI.create("http://192.168.1.200:8091/pools"),
-                URI.create("http://192.168.1.201:8091/pools"));
+                //URI.create("http://192.168.1.200:8091/pools"),
+                URI.create("http://localhost:8091/pools"));
 
 
         clients = new CouchbaseClient[numBuckets];
@@ -30,12 +30,15 @@ public class Main {
         System.out.println("Before starting test...");
         printThreads();
         createClients();
+        System.out.println("Sleeping after client create...");
         Thread.sleep(1500);
         System.out.println("Post creating clients...");
         printThreads();
+        System.out.println("Sleeping for more checking extenrally.");
+        Thread.sleep(60000);
         System.out.println("Shutting down...");
         shutdownClients();
-
+        printThreads();
         System.exit(0);
 
 
